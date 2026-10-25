@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #141a16;
+  --color-ink-soft: #243028;
+  --color-paper: #f4efe4;
+  --color-paper-deep: #e4dccb;
+  --color-moss: #2f6b45;
+  --color-amber: #e39b3a;
+  --color-amber-deep: #b86a22;
+  --color-mist: #8ea194;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-sans: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
+  --radius-hud: 1.25rem;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-sans);
+  }
+
+  button:focus-visible {
+    outline: 2px solid var(--color-amber);
+    outline-offset: 3px;
+  }
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+.sheet {
+  max-height: 58dvh;
+}
+
+@media (min-width: 768px) {
+  .sheet {
+    max-height: none;
+    height: 100%;
+    width: 26rem;
+  }
+}
+
+.touch-only {
+  display: none;
+}
+
+@media (pointer: coarse) {
+  .touch-only {
+    display: flex;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    animation: none;
+  }
+}
+
+.fade-in {
+  animation: fade-in 420ms ease both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
